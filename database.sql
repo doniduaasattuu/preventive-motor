@@ -25,6 +25,12 @@ TRUNCATE checking_motors;
 
 select * from motors;
 
+select * from motors WHERE funcloc = "FP-01-PM3-CUT-RWD1-FDR1";
+
 select * from checking_motors;
 
+DESC checking_motors;
+
 SELECT * FROM checking_motors WHERE motor_funcloc = "FP-01-PM3-CUT-RWD1-FDR1";
+
+insert into motors (funcloc) values ("FP-01-PM3-CUT-RWD1-FDR1");

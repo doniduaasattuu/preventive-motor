@@ -9,7 +9,8 @@ class MotorController extends Controller
 {
     public function get(string $funcloc)
     {
-        $motor = Motor::query()->findOrFail($funcloc);
+        $motor = Motor::query()->find($funcloc);
+        $motor = $motor->toArray();
 
         return view("home", [
             "title" => "Motor",

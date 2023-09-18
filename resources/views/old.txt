@@ -1,0 +1,40 @@
+<!-- <tr>
+                    <th scope="col">Funcloc</th>
+                    <td scope="col">{{ $motor->funcloc }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Electrical panel</th>
+                    <td scope="col">{{ $motor->electrical_panel }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Electrical motor</th>
+                    <td scope="col">{{ $motor->electrical_motor }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Field name</th>
+                    <td scope="col">{{ $motor->field_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Description</th>
+                    <td scope="col">{{ $motor->description }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Manufacture</th>
+                    <td scope="col">{{ $motor->manufacture }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Power</th>
+                    <td scope="col">{{ $motor->power }} kW</td>
+                </tr>
+                <tr>
+                    <th scope="col">Voltage</th>
+                    <td scope="col">{{ $motor->voltage }} V</td>
+                </tr>
+                <tr>
+                    <th scope="col">Current</th>
+                    <td scope="col">{{ $motor->current }} A</td>
+                </tr>
+                <tr>
+                    <th scope="col">Pole</th>
+                    <td scope="col">{{ $motor->pole }} P</td>
+                </tr> -->

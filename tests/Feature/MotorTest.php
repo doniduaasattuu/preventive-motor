@@ -45,5 +45,37 @@ class MotorTest extends TestCase
 
         $date->modify('+1 day');
         echo $date->format('Y-m-d H:i:s');
+
+        self::assertNotNull($date);
+    }
+
+    public function testMotor()
+    {
+        // $motor = Motor::query()->where("funcloc", "=", "FP-01-PM3-CUT-RWD1-FDR1")->first();
+
+        $motor = Motor::find("FP-01-PM3-CUT-RWD1-FDR1");
+        self::assertNotNull($motor);
+        Log::info(json_encode($motor, JSON_PRETTY_PRINT));
+        Log::info($motor->toArray());
+
+
+        // $arrayMotor = $motor->toArray();
+        // self::assertNotNull($arrayMotor);
+
+        // Log::info($arrayMotor);
+
+        // foreach ($arrayMotor as $data) {
+        //     Log::info($data);
+        // }
+
+        // $keys = array_keys($arrayMotor);
+        // foreach ($keys as $dataKey) {
+        //     Log::info($dataKey);
+        // }
+
+        // $motor->each(function ($data) {
+        //     Log::info(json_encode($data, JSON_PRETTY_PRINT));
+        //     self::assertNotNull($data);
+        // });
     }
 }

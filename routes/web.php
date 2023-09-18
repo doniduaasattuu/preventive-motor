@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/motor/{funcloc}', [App\Http\Controllers\MotorController::class, "get"]);
+
+Route::get('/checking-motor', function () {
+    return view("forms.cheking-motor");
+});

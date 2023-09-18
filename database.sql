@@ -16,3 +16,15 @@ CREATE TABLE `motors` (
   `pole` char(2) DEFAULT NULL,
   PRIMARY KEY (`funcloc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+desc checking_motors;
+
+delete from checking_motors;
+
+TRUNCATE checking_motors;
+
+select * from motors;
+
+select * from checking_motors;
+
+SELECT * FROM checking_motors WHERE motor_funcloc = "FP-01-PM3-CUT-RWD1-FDR1";

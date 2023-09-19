@@ -38,3 +38,18 @@
                     <th scope="col">Pole</th>
                     <td scope="col">{{ $motor->pole }} P</td>
                 </tr> -->
+
+
+
+                       
+
+            <?php
+            $motor->each(function ($value, $key) {
+            ?>
+                <tr>
+                    <th>{{ $key }}</th>
+                    <td>{{ $value }}</td>
+                </tr>
+            <?php
+            });
+            ?>

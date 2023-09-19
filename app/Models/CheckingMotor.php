@@ -18,4 +18,16 @@ class CheckingMotor extends Model
     {
         return $this->belongsTo(Motor::class, "motor_funcloc", "funcloc");
     }
+
+    protected $fillable = [
+        "motor_funcloc",
+        "clean_up",
+        "nipple_grease",
+        "greasing",
+        "vibration",
+        "temperature_a",
+        "temperature_b",
+        "temperature_c",
+        "temperature_d",
+    ];
 }

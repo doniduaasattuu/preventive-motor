@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/motor/{funcloc}', [App\Http\Controllers\MotorController::class, "get"]);
+Route::post('/motor', [App\Http\Controllers\MotorController::class, "search"]);
 
-Route::get('/checking-motor', function () {
-    return view("forms.cheking-motor");
-});
+Route::get('/checking-motor/{funcloc}', [App\Http\Controllers\CheckingMotorController::class, "data"]);
+Route::post('/checking-motor/{funcloc}', [App\Http\Controllers\CheckingMotorController::class, "input"]);

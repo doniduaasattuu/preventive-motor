@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Models\CheckingMotor;
 use App\Models\Motor;
 use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
@@ -51,13 +53,9 @@ class MotorTest extends TestCase
 
     public function testMotor()
     {
-        // $motor = Motor::query()->where("funcloc", "=", "FP-01-PM3-CUT-RWD1-FDR1")->first();
-
-        $motor = Motor::find("FP-01-PM3-CUT-RWD1-FDR1");
+        $motor = Motor::findOrFail("FP-01-PM3-CUT-RWD1-FDR1");
         self::assertNotNull($motor);
-        Log::info(json_encode($motor, JSON_PRETTY_PRINT));
-        Log::info($motor->toArray());
-
+        Log::info(json_encode($motor->field_name));
 
         // $arrayMotor = $motor->toArray();
         // self::assertNotNull($arrayMotor);
@@ -77,5 +75,41 @@ class MotorTest extends TestCase
         //     Log::info(json_encode($data, JSON_PRETTY_PRINT));
         //     self::assertNotNull($data);
         // });
+    }
+
+    public function testChecking()
+    {
+        $motor =  Motor::find("FP-01-PM3-CUT-RWD1-FDR1");
+        $checkingMotor = $motor->checkingMotors;
+
+        foreach ($checkingMotor as $check) {
+            Log::info(json_encode($check));
+        }
+    }
+
+    public function testDataBase()
+    {
+        $motor = DB::table('motors')->select("*")->where("funcloc", "=", "FP-01-PM3-CUT-RWD1-FDR1")->first();
+        self::assertNotNull($motor);
+        Log::info(json_encode($motor));
+
+        collect($motor)->each(function ($value, $key) {
+            Log::info($key . " = " . $value);
+        });
+    }
+
+    public function testFieldName()
+    {
+        $field_name = Motor::query()->where("field_name", "=", "REAR DRUM")->first();
+        self::assertNotNull($field_name);
+        Log::info(json_encode($field_name, JSON_PRETTY_PRINT));
+        Log::info(json_encode($field_name->field_name));
+        Log::info(json_encode($field_name->funcloc));
+    }
+
+    public function testNotFound()
+    {
+        $notfound = Motor::find("REAR DRUM");
+        self::assertNull($notfound);
     }
 }

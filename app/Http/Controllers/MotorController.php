@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Motor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MotorController extends Controller
 {
     public function get(string $funcloc)
     {
-        $motor = Motor::query()->find($funcloc);
-        $motor = $motor->toArray();
+        $motor = Motor::findOrFail($funcloc);
 
         return view("home", [
             "title" => "Motor",
             "motor" => $motor
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $funclocExpected = $request->input("funcloc");
+
+        $motor = Motor::find($funclocExpected);
+
+        if ($motor != null) {
+            return redirect("motor/$funclocExpected");
+        }
+
+        $motor = Motor::query()->where("field_name", "=", $funclocExpected)->first();
+
+        if ($motor != null && strtoupper($funclocExpected) == $motor->field_name) {
+            return redirect("motor/$motor->funcloc");
+        }
+
+        return abort(404);
     }
 }

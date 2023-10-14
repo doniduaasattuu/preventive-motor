@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterDataMotor;
 use App\Models\Motor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,17 @@ class MotorController extends Controller
         return view("home", [
             "title" => "Motor",
             "motor" => $motor
+        ]);
+    }
+
+    public function get_unique_id(string $unique_id)
+    {
+        $unique_id = MasterDataMotor::query()->where("unique_id", "=", $unique_id)->first();
+
+        // return response()->json($unique_id, JSON_PRETTY_PRINT);
+        return view("motor-data", [
+            "title" => "Motor",
+            "motor" => $unique_id
         ]);
     }
 

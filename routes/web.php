@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/master-motor/{unique_id}', [App\Http\Controllers\MotorController::class, "get_unique_id"]);
 Route::get('/motor/{funcloc}', [App\Http\Controllers\MotorController::class, "get"]);
 Route::post('/motor', [App\Http\Controllers\MotorController::class, "search"]);
 

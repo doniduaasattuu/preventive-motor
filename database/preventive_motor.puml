@@ -1,0 +1,8 @@
+@startuml preventive_motor
+
+class master_data_motor
+{
+    
+}
+
+@enduml
